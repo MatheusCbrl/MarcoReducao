@@ -117,7 +117,8 @@ var calc = function(){
     var z = 1813.03 * (50/100);
     document.getElementById("totalSeguro01").value = z.toFixed(2);
   }
-
+	
+if(sal >= 1 ){
     var y = sal *(100/100);
     document.getElementById("totalprov01").value = y.toFixed(2);
     var to = total_sal
@@ -132,7 +133,7 @@ var calc = function(){
     var outro = j - final
     document.getElementById("totalajuda01").value = outro.toFixed(2);
     document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-
+}
    
 
 };
