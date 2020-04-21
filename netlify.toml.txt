@@ -1,0 +1,4 @@
+[ build ]
+
+  comando = " npm run build "
+  publish = " / public "
