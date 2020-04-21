@@ -25,9 +25,6 @@
 <script type="text/javascript">
 var calc = function(){
 	var sal = document.getElementById("sal").value; // pegamos o valor que digitamos no input
-  //pega valor empresa01;
-  var i = document.getElementById("empresa01");
-  var empresa_val = i.options[i.selectedIndex].value;
   //pega valor salário proventos;
   var total_sal = document.getElementById("totalprov01").value;
   //pega valor salário proventos;
@@ -63,7 +60,7 @@ var calc = function(){
     document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
   }
 
-  var sal50 = total_sal * (50/100)
+  var sal50 = sal * (50/100)
   var inss50 = inss_Init_fim
   var Sal_sem_inss = sal50 - inss50
 
@@ -97,26 +94,26 @@ var calc = function(){
 
 
 //SEGURO desemprego
-  if(total_sal < 1599.61){
-    var x = (80/100) * total_sal;
+  if(sal < 1599.61){
+    var x = (80/100) * sal;
     document.getElementById("totalSeguro01").value = x.toFixed(2);
   }
 
-  if(total_sal >= 1599.61 && total_sal <= 2666.29){
-    var dim = total_sal - 1599.61
+  if(sal >= 1599.61 && sal <= 2666.29){
+    var dim = sal - 1599.61
     var x = (50/100) * dim;
     var y = 1279.69 *(100/100);
     var z = x + y;
     var total = z *(50/100)
     document.getElementById("totalSeguro01").value = total.toFixed(2);
   }
-  if(total_sal >= 2666.29 ){
+  if(sal >= 2666.29 ){
     var z = 1813.03 * (50/100);
     document.getElementById("totalSeguro01").value = z.toFixed(2);
 	}
 
 //Por empresa
-  if(empresa_val == 1045 ){
+  if(sal >= 1 ){
     var y = sal *(100/100);
     var z =  y;
     document.getElementById("totalprov01").value = z.toFixed(2);
@@ -133,41 +130,6 @@ var calc = function(){
     document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
 
   }
-
-  if(empresa_val == 1104.93 ){
-    var y = sal *(100/100);
-    var z = y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
-    var j = (50/100) * z;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = final + l
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-  }
-
-  if(empresa_val == 1068.85 ){
-    var y = sal *(100/100);
-    var z = y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
-    var j = (50/100) * z;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = final + l
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-  }
-
 };
 
 </script>
@@ -225,17 +187,7 @@ var calc = function(){
         <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
           <form onsubmit="calc();">
           <div class="row">
-            <div class="form-group col-md-6">
-              <Label for="requisitante">Empresa<span class="fs-color-danger">*</span></Label>
-              <select title="Escolha a empresa que trabalha" name="empresa" id="empresa01" class="form-control">
-                <optgroup label="selecione sua Empresa">
-                  <option value="1045" id="ins1">Marcopolo</option>
-                  <option value="1104.93" id="ins2">Marcopolo Ciferal</option>
-                  <option value="1068.85" id="ins2">Marcopolo São Mateus</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-5">
               <Label for="requisitante" >Salário Atual<span class="fs-color-danger">*</span></Label>
               <input type="number" title="Informe aqui seu salário base atual" id="sal" class="form-control"/>
             </div>
@@ -247,9 +199,16 @@ var calc = function(){
               <input class="form-control" id="totalprov01" type="number" value= " " placeholder="Total de proventos é: " disabled>
             </div>
           </div>
-            <button type="button" class="btn btn-success" id="button_acao" value="calcular" title="Dê sempre três cliques ou mais para validar o cálculo" onclick="calc()">
-              Calcular
-            </button>
+          <div class="row">
+            <div class="form-group col-md-10">
+              <Label for="requisitante">Dê sempre três cliques ou mais para validar o cálculo</Label>
+               <button type="button" class="btn btn-success" id="button_acao" value="calcular" title="Dê sempre três cliques ou mais para validar o cálculo" onclick="calc()">
+                 Calcular
+               </button>
+            </div>
+          </div>
+
+
           </div>
 
           <div class="row">
