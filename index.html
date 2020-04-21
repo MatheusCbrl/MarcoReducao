@@ -117,17 +117,18 @@ var sal50 = sal * (50/100)
   if(sal >= 1 ){
     var y = sal *(100/100);
     var z =  y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
+   document.getElementById("totalprov01").value = z.toFixed(2);
     var j = (50/100) * z;
     var m = total_Seguro *(100/100);
     var n = total_Inss_Fim *(100/100);
     var k = total_Ir_fim *(100/100);
-    var final = n + k//tirar valor de inss e ir
-    var final_ajuda = j - final;
     var l = j + m;//salario 50% + seguro desemprego
-    var outro = l - final
-    document.getElementById("totalajuda01").value = final_ajuda.toFixed(2);
-    document.getElementById("totalrecebe01").value = outro.toFixed(2);
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
   }
 };
 
