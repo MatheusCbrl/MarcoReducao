@@ -64,6 +64,26 @@ var calc = function(){
   var inss50 = inss_Init_fim
   var Sal_sem_inss = sal50 - inss50
 
+  
+
+//SEGURO desemprego
+  if(sal < 1599.61){
+    var x = (80/100) * sal;
+    document.getElementById("totalSeguro01").value = x.toFixed(2);
+  }
+
+  if(sal >= 1599.61 && sal <= 2666.29){
+    var dim = sal - 1599.61
+    var x = (50/100) * dim;
+    var y = 1279.69 *(100/100);
+    var z = x + y;
+    var total = z *(50/100)
+    document.getElementById("totalSeguro01").value = total.toFixed(2);
+  }
+  if(sal >= 2666.29 ){
+    var z = 1813.03 * (50/100);
+    document.getElementById("totalSeguro01").value = z.toFixed(2);
+  }
   //IRPF
   if(Sal_sem_inss <= 1903.98){
     //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
@@ -92,25 +112,6 @@ var calc = function(){
     document.getElementById("totalir").value = fim.toFixed(2);
   }
 
-
-//SEGURO desemprego
-  if(sal < 1599.61){
-    var x = (80/100) * sal;
-    document.getElementById("totalSeguro01").value = x.toFixed(2);
-  }
-
-  if(sal >= 1599.61 && sal <= 2666.29){
-    var dim = sal - 1599.61
-    var x = (50/100) * dim;
-    var y = 1279.69 *(100/100);
-    var z = x + y;
-    var total = z *(50/100)
-    document.getElementById("totalSeguro01").value = total.toFixed(2);
-  }
-  if(sal >= 2666.29 ){
-    var z = 1813.03 * (50/100);
-    document.getElementById("totalSeguro01").value = z.toFixed(2);
-	}
 
 //Por empresa
   if(sal >= 1 ){
