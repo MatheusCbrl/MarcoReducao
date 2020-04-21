@@ -28,7 +28,7 @@
   //pega valor salário proventos;
   var total_sal = document.getElementById("totalprov01").value;
   //pega valor salário proventos;
-  var total_sal50_fim = total_sal * (50/100)
+  var total_sal50_fim = sal * (50/100)
   //document.getElementById("totalprov50").value = total_sal50_fim.toFixed(2);
   var total_Seguro = document.getElementById("totalSeguro01").value;
   var total_Inss_Fim = document.getElementById("totalinss").value;
@@ -116,7 +116,7 @@
     var y = sal *(100/100);
     var z =  y;
    document.getElementById("totalprov01").value = z.toFixed(2);
-    var j = (50/100) * z;
+    var j = sal * (50/100);
     var m = total_Seguro *(100/100);
     var n = total_Inss_Fim *(100/100);
     var k = total_Ir_fim *(100/100);
