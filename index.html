@@ -124,9 +124,10 @@ var calc = function(){
     var l = j + m;//salario 50% + seguro desemprego
     //tirar valor de inss e ir
     var final = n + k
+    var final_ajuda = j- final;
     var outro = l - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+    document.getElementById("totalajuda01").value = final_ajuda.toFixed(2);
+    document.getElementById("totalrecebe01").value = outro.toFixed(2);
 
   }
 };
