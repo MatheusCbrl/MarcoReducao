@@ -322,8 +322,8 @@ var calc = function(){
           <form onsubmit="calc();">
           <div class="row">
             <div class="form-group col-md-3">
-              <Label for="requisitante" title="Escolha a empresa que trabalha.">Empresa<span class="fs-color-danger">*</span></Label>
-              <select name="empresa" id="empresa01" class="form-control">
+              <Label for="requisitante">Empresa<span class="fs-color-danger">*</span></Label>
+              <select title="Escolha a empresa que trabalha." name="empresa" id="empresa01" class="form-control">
                 <optgroup label="selecione sua Empresa">
                   <option value="1045" id="ins1">Marcopolo</option>
                   <option value="1104.93" id="ins2">Marcopolo Ciferal</option>
@@ -332,12 +332,12 @@ var calc = function(){
               </select>
             </div>
             <div class="form-group col-md-3">
-              <Label for="requisitante" title="Aqui deve somar ao seu salário o adicional noturno e adicional por tempo de trabalho se tiverem.">Salário Atual</Label>
-              <input type="number"  id="sal" class="form-control"/>
+              <Label for="requisitante" >Salário Atual</Label>
+              <input type="number" title="Aqui deve somar ao seu salário o adicional noturno e adicional por tempo de trabalho se tiverem." id="sal" class="form-control"/>
             </div>
             <div class="form-group col-md-4">
-              <Label for="requisitante" title="Selecione apenas se tiver">Adicional<span class="fs-color-danger">*</span></Label>
-              <select name="adicional" id="adicional01" class="form-control">
+              <Label for="requisitante" >Adicional<span class="fs-color-danger">*</span></Label>
+              <select name="adicional" id="adicional01" title="Selecione apenas se tiver" class="form-control">
                 <optgroup label="Não se Aplica">
                   <option value="1">Sem referência</option>
                 </optgroup>
