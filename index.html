@@ -29,12 +29,11 @@
   var total_sal = document.getElementById("totalprov01").value;
   //pega valor salário proventos;
   var total_sal50_fim = sal * (50/100)
-  //document.getElementById("totalprov50").value = total_sal50_fim.toFixed(2);
+  document.getElementById("totalprov50").value = total_sal50_fim.toFixed(2);
   var total_Seguro = document.getElementById("totalSeguro01").value;
   var total_Inss_Fim = document.getElementById("totalinss").value;
   var total_Ir_fim = document.getElementById("totalir").value;
   var total_sem_inss = document.getElementById("totalajuda01").value;
-
   var Sal_sem_inss = total_sal50_fim - total_Inss_Fim
 
 
@@ -102,28 +101,28 @@
     document.getElementById("totalprov01").value = z.toFixed(2);
   }
  //IRPF
-  if(total_sem_inss <= 1903.98){
+  if(Sal_sem_inss <= 1903.98){
     //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
   }
-  if(total_sem_inss >= 1903.99 && total_sem_inss <= 2826.65){
-    var ir_final = (7.5/100) * total_sem_inss;
+  if(Sal_sem_inss >= 1903.99 && Sal_sem_inss <= 2826.65){
+    var ir_final = (7.5/100) * Sal_sem_inss;
     var fim = ir_final - 142.80
     document.getElementById("totalir").value = fim.toFixed(2);
   }
-  if(total_sem_inss >= 2826.66 && total_sem_inss <= 3751.05){
-    var ir_final = (15/100) * total_sem_inss;
+  if(Sal_sem_inss >= 2826.66 && Sal_sem_inss <= 3751.05){
+    var ir_final = (15/100) * Sal_sem_inss;
     var fim = ir_final - 354.80
     document.getElementById("totalir").value = fim.toFixed(2);
 
   }
 
-  if(total_sem_inss >= 3751.06 && total_sem_inss <= 4664.68){
-    var ir_final = (22.5/100) * total_sem_inss;
+  if(Sal_sem_inss >= 3751.06 && Sal_sem_inss <= 4664.68){
+    var ir_final = (22.5/100) * Sal_sem_inss;
     var fim = ir_final - 636.13
     document.getElementById("totalir").value = fim.toFixed(2);
   }
 
-  if(total_sem_inss > 4664.68){
+  if(Sal_sem_inss > 4664.68){
     var ir_final = (27.5/100) * Sal_sem_inss;
     var fim = ir_final - 869.1336
     document.getElementById("totalir").value = fim.toFixed(2);
