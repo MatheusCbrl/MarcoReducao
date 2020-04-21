@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Redução</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/resume.min.css" rel="stylesheet">
+
+</head>
+<script type="text/javascript">
+var calc = function(){
+	var sal = document.getElementById("sal").value; // pegamos o valor que digitamos no input
+  //pega valor empresa01;
+  var i = document.getElementById("empresa01");
+  var empresa_val = i.options[i.selectedIndex].value;
+  //pega valor adicional salário;
+  var e = document.getElementById("adicional01");
+  var insa_val = e.options[e.selectedIndex].value;
+  //pega valor salário proventos;
+  var total_sal = document.getElementById("totalprov01").value;
+  //pega valor salário proventos;
+  var total_sal50_fim = total_sal * (50/100)
+  document.getElementById("totalprov50").value = total_sal50_fim.toFixed(2);
+  var total_Seguro = document.getElementById("totalSeguro01").value;
+  var total_Inss_Fim = document.getElementById("totalinss").value;
+  var total_Ir_fim = document.getElementById("totalir").value;
+
+
+//INSS
+  if(total_sal50_fim <= 1045){
+    var inss_Init_fim = (7.5/100) * total_sal50_fim;
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim >= 1045.01 && total_sal50_fim <= 2089.60){
+    var inss_Init = (9/100) * total_sal50_fim;
+    var inss_Init_fim = inss_Init - 15.67
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim >= 2089.61 && total_sal50_fim <= 3134.40){
+    var inss_Init = (12/100) * total_sal50_fim;
+    var inss_Init_fim = inss_Init - 78.36
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim >= 3134.41 && total_sal50_fim <= 6101.06){
+    var inss_Init = (14/100) * total_sal50_fim;
+    var inss_Init_fim = inss_Init - 141.04
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim > 6101.06){
+    var inss_Init_fim = 713.10;
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+
+  var sal50 = total_sal * (50/100)
+  var inss50 = inss_Init_fim
+  var Sal_sem_inss = sal50 - inss50
+
+  //IRPF
+  if(Sal_sem_inss <= 1903.98){
+    //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
+  }
+  if(Sal_sem_inss >= 1903.99 && Sal_sem_inss <= 2826.65){
+    var ir_final = (7.5/100) * Sal_sem_inss;
+    var fim = ir_final - 142.80
+    document.getElementById("totalir").value = fim.toFixed(2);
+  }
+  if(Sal_sem_inss >= 2826.66 && Sal_sem_inss <= 3751.05){
+    var ir_final = (15/100) * Sal_sem_inss;
+    var fim = ir_final - 354.80
+    document.getElementById("totalir").value = fim.toFixed(2);
+
+  }
+
+  if(Sal_sem_inss >= 3751.06 && Sal_sem_inss <= 4664.68){
+    var ir_final = (22.5/100) * Sal_sem_inss;
+    var fim = ir_final - 636.13
+    document.getElementById("totalir").value = fim.toFixed(2);
+  }
+
+  if(Sal_sem_inss > 4664.68){
+    var ir_final = (27.5/100) * Sal_sem_inss;
+    var fim = ir_final - 869.1336
+    document.getElementById("totalir").value = fim.toFixed(2);
+  }
+
+
+//SEGURO desemprego
+  if(total_sal < 1599.61){
+    var x = (80/100) * total_sal;
+    document.getElementById("totalSeguro01").value = x.toFixed(2);
+  }
+
+  if(total_sal >= 1599.61 && total_sal <= 2666.29){
+    var dim = total_sal - 1599.61
+    var x = (50/100) * dim;
+    var y = 1279.69 *(100/100);
+    var z = x + y;
+    var total = z *(50/100)
+    document.getElementById("totalSeguro01").value = total.toFixed(2);
+  }
+  if(sal >= 2666.29 ){
+    var z = 1813.03 * (50/100);
+    document.getElementById("totalSeguro01").value = z.toFixed(2);
+	}
+
+//sem adicional
+  if(insa_val == 1){
+    var y = sal *(100/100);
+    document.getElementById("totalprov01").value = y.toFixed(2);
+    var to = total_sal
+    var j = (50/100) * total_sal;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim =  l - final
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+
+	}
+//periculosidade
+  if(insa_val == 0.3){
+    var x = (30/100) * sal;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var to = total_sal
+    var j = (50/100) * total_sal;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+
+	}
+//insalubridades
+  if(insa_val == 0.2 && empresa_val == 1045 ){
+    var x = (20/100) * empresa_val;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var j = (50/100) * z;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+
+  }
+  if(insa_val == 0.4 && empresa_val == 1045 ){
+    var x = (40/100) * empresa_val;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var j = (50/100) * z;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+  }
+
+  if(insa_val == 0.2 && empresa_val == 1104.93 ){
+    var x = (20/100) * empresa_val;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var j = (50/100) * z;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+  }
+  if(insa_val == 0.4 && empresa_val == 1104.93 ){
+    var x = (40/100) * empresa_val;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var j = (50/100) * z;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+  }
+
+  if(insa_val == 0.2 && empresa_val == 1068.85 ){
+    var x = (20/100) * empresa_val;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var j = (50/100) * z;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+  }
+  if(insa_val == 0.4 && empresa_val == 1068.85 ){
+    var x = (40/100) * empresa_val;
+    var y = sal *(100/100);
+    var z = x + y;
+    document.getElementById("totalprov01").value = z.toFixed(2);
+    var j = (50/100) * z;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = final + l
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+  }
+
+};
+
+</script>
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Simulador Redução </span>
+      <span class="d-none d-lg-block">
+        <img class="img-fluid img-logo mx-auto mb-3" src="img/calculator.png" alt="">
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#sobre">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#calculo">Cálculo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#info">Informações</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="sobre">
+      <div class="w-100">
+        <h1 class="mb-0">Simulador
+          <span class="text-primary">Redução</span>
+        </h1>
+        <div class="subheading mb-5">SIMULADOR DE REDUÇÃO DE 50% DE JORNADA DE TRABALHO E SALÁRIO ·
+          <a href="mailto:teste@emarcopolo.com.br">teste@marcopolo.com.br</a>
+        </div>
+        <li  class="lead mb-2"> Informe seu salário para obter a simulaçao dos rendimentos líquidos.</li>
+        <div class="social-icons">
+          <a href="#">
+            <i class="fab "><img class="img-fluid img-bus mx-auto mb-3" src="img/bus.png" alt=""></i>
+          </a>
+      </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="calculo">
+      <div class="w-100">
+        <h2 class="mb-3">Redução de  Jornada</h2>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <form onsubmit="calc();">
+          <div class="row">
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">Empresa<span class="fs-color-danger">*</span></Label>
+              <select name="empresa" id="empresa01" class="form-control">
+                <optgroup label="selecione sua Empresa">
+                  <option value="1045" id="ins1">Marcopolo</option>
+                  <option value="1104.93" id="ins2">Marcopolo Ciferal</option>
+                  <option value="1068.85" id="ins2">Marcopolo São Mateus</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">Salário Atual<abbr title="Aqui deve somar ao seu salário o adicional noturno e adicional por tempo de trabalho se tiverem.">*</abbr></Label>
+              <input type="number"  id="sal" class="form-control"/>
+            </div>
+            <div class="form-group col-md-4">
+              <Label class="lead mb-1" for="requisitante">Adicional<span class="fs-color-danger">*</span></Label>
+              <select name="adicional" id="adicional01" class="form-control">
+                <optgroup label="Não se Aplica">
+                  <option value="1">Sem referência</option>
+                </optgroup>
+                <optgroup label="Insalubridade">
+                  <option value="0.2" id="ins1">20%</option>
+                  <option value="0.4" id="ins2">40%</option>
+                </optgroup>
+                <optgroup label="Periculosidade">
+                  <option value="0.3" id="per1">30%</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-5">
+              <Label class="lead mb-1" for="requisitante">Total de proventos</Label>
+              <input class="form-control" id="totalprov01" type="number" value= " " placeholder="Total de proventos" disabled>
+            </div>
+          </div>
+            <button type="button" class="btn btn-success" id="button_acao" value="calcular" onclick="calc()">
+              Calcular
+            </button>
+            <Label for="calcs"><abbr title="Dê sempre três cliques para validar o cálculo.">*</abbr></Label>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">TOTAL DE PROVENTOS 50%</Label>
+              <input class="form-control" id="totalprov50" type="number" value= " " disabled>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">INSS</Label>
+              <input class="form-control" id="totalinss" type="number" value= " " disabled>
+            </div>
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">IR</Label>
+              <input class="form-control" id="totalir" type="number" value= " " disabled>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">Salário 50 %</Label>
+              <input class="form-control" id="totalajuda01" type="number" value= " " disabled>
+            </div>
+            <div class="form-group col-md-3">
+              <Label class="lead mb-1" for="requisitante">Seguro desemprego</Label>
+              <input class="form-control" id="totalSeguro01" type="number" value= " " disabled>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-5">
+              <Label class="lead mb-1" for="requisitante">Total para Receber</Label>
+              <input class="form-control" id="totalrecebe01" type="number" value= " "  placeholder="Total líquido para receber." disabled>
+            </div>
+          </div>
+          <input class="btn btn-danger" type="reset" value="Limpar">
+          <br>
+        </form>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="info">
+      <div class="w-100">
+        <h2 class="mb-5">Informações</h2>
+        <p>Beneficiários de programas como aposentadoria, aqueles já recebem seguro desemprego, não tem direito ao benefício do seguro desemprego simulado.</p>
+        <p class="mb-0">Maiores informações podem ser obtidas contatando as áreas de Remuneração e Folha de Pagamento atraves dos ramais 4212, 4216, 4221 e 4220.</p>
+      </div>
+    </section>
+
+    <hr class="m-0">
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/resume.min.js"></script>
+
+</body>
+
+</html>
