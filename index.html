@@ -40,7 +40,32 @@ var sal50 = sal * (50/100)
   var Sal_sem_inss = sal50 - inss50
 
 
- //IRPF
+ 
+//INSS
+  if(total_sal50_fim <= 1045){
+    var inss_Init_fim = (7.5/100) * total_sal50_fim;
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim >= 1045.01 && total_sal50_fim <= 2089.60){
+    var inss_Init = (9/100) * total_sal50_fim;
+    var inss_Init_fim = inss_Init - 15.67
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim >= 2089.61 && total_sal50_fim <= 3134.40){
+    var inss_Init = (12/100) * total_sal50_fim;
+    var inss_Init_fim = inss_Init - 78.36
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim >= 3134.41 && total_sal50_fim <= 6101.06){
+    var inss_Init = (14/100) * total_sal50_fim;
+    var inss_Init_fim = inss_Init - 141.04
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+  if(total_sal50_fim > 6101.06){
+    var inss_Init_fim = 713.10;
+    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
+  }
+//IRPF
   if(Sal_sem_inss <= 1903.98){
     //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
   }
@@ -67,31 +92,6 @@ var sal50 = sal * (50/100)
     var fim = ir_final - 869.1336
     document.getElementById("totalir").value = fim.toFixed(2);
   }
-//INSS
-  if(total_sal50_fim <= 1045){
-    var inss_Init_fim = (7.5/100) * total_sal50_fim;
-    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
-  }
-  if(total_sal50_fim >= 1045.01 && total_sal50_fim <= 2089.60){
-    var inss_Init = (9/100) * total_sal50_fim;
-    var inss_Init_fim = inss_Init - 15.67
-    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
-  }
-  if(total_sal50_fim >= 2089.61 && total_sal50_fim <= 3134.40){
-    var inss_Init = (12/100) * total_sal50_fim;
-    var inss_Init_fim = inss_Init - 78.36
-    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
-  }
-  if(total_sal50_fim >= 3134.41 && total_sal50_fim <= 6101.06){
-    var inss_Init = (14/100) * total_sal50_fim;
-    var inss_Init_fim = inss_Init - 141.04
-    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
-  }
-  if(total_sal50_fim > 6101.06){
-    var inss_Init_fim = 713.10;
-    document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
-  }
-
   
 //SEGURO desemprego
   if(sal < 1599.61){
