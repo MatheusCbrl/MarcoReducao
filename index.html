@@ -35,7 +35,38 @@ var calc = function(){
   var total_Ir_fim = document.getElementById("totalir").value;
   var total_sem_inss = document.getElementById("totalajuda01").value;
 
+var sal50 = sal * (50/100)
+  var inss50 = inss_Init_fim
+  var Sal_sem_inss = sal50 - inss50
 
+
+ //IRPF
+  if(Sal_sem_inss <= 1903.98){
+    //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
+  }
+  if(Sal_sem_inss >= 1903.99 && Sal_sem_inss <= 2826.65){
+    var ir_final = (7.5/100) * Sal_sem_inss;
+    var fim = ir_final - 142.80
+    document.getElementById("totalir").value = fim.toFixed(2);
+  }
+  if(Sal_sem_inss >= 2826.66 && Sal_sem_inss <= 3751.05){
+    var ir_final = (15/100) * Sal_sem_inss;
+    var fim = ir_final - 354.80
+    document.getElementById("totalir").value = fim.toFixed(2);
+
+  }
+
+  if(Sal_sem_inss >= 3751.06 && Sal_sem_inss <= 4664.68){
+    var ir_final = (22.5/100) * Sal_sem_inss;
+    var fim = ir_final - 636.13
+    document.getElementById("totalir").value = fim.toFixed(2);
+  }
+
+  if(Sal_sem_inss > 4664.68){
+    var ir_final = (27.5/100) * Sal_sem_inss;
+    var fim = ir_final - 869.1336
+    document.getElementById("totalir").value = fim.toFixed(2);
+  }
 //INSS
   if(total_sal50_fim <= 1045){
     var inss_Init_fim = (7.5/100) * total_sal50_fim;
@@ -81,38 +112,7 @@ var calc = function(){
     document.getElementById("totalSeguro01").value = z.toFixed(2);
   }
   
-  var sal50 = sal * (50/100)
-  var inss50 = inss_Init_fim
-  var Sal_sem_inss = sal50 - inss50
-
-
- //IRPF
-  if(Sal_sem_inss <= 1903.98){
-    //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
-  }
-  if(Sal_sem_inss >= 1903.99 && Sal_sem_inss <= 2826.65){
-    var ir_final = (7.5/100) * Sal_sem_inss;
-    var fim = ir_final - 142.80
-    document.getElementById("totalir").value = fim.toFixed(2);
-  }
-  if(Sal_sem_inss >= 2826.66 && Sal_sem_inss <= 3751.05){
-    var ir_final = (15/100) * Sal_sem_inss;
-    var fim = ir_final - 354.80
-    document.getElementById("totalir").value = fim.toFixed(2);
-
-  }
-
-  if(Sal_sem_inss >= 3751.06 && Sal_sem_inss <= 4664.68){
-    var ir_final = (22.5/100) * Sal_sem_inss;
-    var fim = ir_final - 636.13
-    document.getElementById("totalir").value = fim.toFixed(2);
-  }
-
-  if(Sal_sem_inss > 4664.68){
-    var ir_final = (27.5/100) * Sal_sem_inss;
-    var fim = ir_final - 869.1336
-    document.getElementById("totalir").value = fim.toFixed(2);
-  }
+  
 //Por empresa
   if(sal >= 1 ){
     var y = sal *(100/100);
@@ -122,9 +122,9 @@ var calc = function(){
     var m = total_Seguro *(100/100);
     var n = total_Inss_Fim *(100/100);
     var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
     var final = n + k//tirar valor de inss e ir
-    var final_ajuda = j- final;
+    var final_ajuda = j - final;
+    var l = j + m;//salario 50% + seguro desemprego
     var outro = l - final
     document.getElementById("totalajuda01").value = final_ajuda.toFixed(2);
     document.getElementById("totalrecebe01").value = outro.toFixed(2);
