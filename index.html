@@ -322,7 +322,7 @@ var calc = function(){
           <form onsubmit="calc();">
           <div class="row">
             <div class="form-group col-md-3">
-              <Label for="requisitante">Empresa<span class="fs-color-danger">*</span></Label>
+              <Label for="requisitante" title="Escolha a empresa que trabalha.">Empresa<span class="fs-color-danger">*</span></Label>
               <select name="empresa" id="empresa01" class="form-control">
                 <optgroup label="selecione sua Empresa">
                   <option value="1045" id="ins1">Marcopolo</option>
@@ -332,11 +332,11 @@ var calc = function(){
               </select>
             </div>
             <div class="form-group col-md-3">
-              <Label for="requisitante">Salário Atual<abbr title="Aqui deve somar ao seu salário o adicional noturno e adicional por tempo de trabalho se tiverem.">*</abbr></Label>
+              <Label for="requisitante" title="Aqui deve somar ao seu salário o adicional noturno e adicional por tempo de trabalho se tiverem.">Salário Atual</Label>
               <input type="number"  id="sal" class="form-control"/>
             </div>
             <div class="form-group col-md-4">
-              <Label for="requisitante">Adicional<span class="fs-color-danger">*</span></Label>
+              <Label for="requisitante" title="Selecione apenas se tiver">Adicional<span class="fs-color-danger">*</span></Label>
               <select name="adicional" id="adicional01" class="form-control">
                 <optgroup label="Não se Aplica">
                   <option value="1">Sem referência</option>
@@ -376,7 +376,7 @@ var calc = function(){
             </div>
             <div class="form-group col-md-3">
               <Label for="requisitante">IR - Imposto de Renda</Label>
-              <input class="form-control" id="totalir" type="number" value= " " disabled>
+              <input class="form-control" id="totalir" type="number" title="Desconto" value= " " disabled>
             </div>
           </div>
 
