@@ -28,9 +28,7 @@ var calc = function(){
   //pega valor empresa01;
   var i = document.getElementById("empresa01");
   var empresa_val = i.options[i.selectedIndex].value;
-  //pega valor adicional salário;
-  var e = document.getElementById("adicional01");
-  var insa_val = e.options[e.selectedIndex].value;
+  var insa_val = 1;
   //pega valor salário proventos;
   var total_sal = document.getElementById("totalprov01").value;
   //pega valor salário proventos;
@@ -118,7 +116,8 @@ var calc = function(){
     document.getElementById("totalSeguro01").value = z.toFixed(2);
   }
 	
-if(sal >= 1 ){
+//sem adicional
+  if(insa_val == 1){
     var y = sal *(100/100);
     document.getElementById("totalprov01").value = y.toFixed(2);
     var to = total_sal
@@ -133,9 +132,9 @@ if(sal >= 1 ){
     var outro = j - final
     document.getElementById("totalajuda01").value = outro.toFixed(2);
     document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+
 }
    
-
 };
 
 </script>
