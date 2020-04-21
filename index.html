@@ -28,9 +28,6 @@ var calc = function(){
   //pega valor empresa01;
   var i = document.getElementById("empresa01");
   var empresa_val = i.options[i.selectedIndex].value;
-  //pega valor adicional salário;
-  var e = document.getElementById("adicional01");
-  var insa_val = e.options[e.selectedIndex].value;
   //pega valor salário proventos;
   var total_sal = document.getElementById("totalprov01").value;
   //pega valor salário proventos;
@@ -118,49 +115,10 @@ var calc = function(){
     document.getElementById("totalSeguro01").value = z.toFixed(2);
 	}
 
-//sem adicional
-  if(insa_val == 1){
+//Por empresa
+  if(empresa_val == 1045 ){
     var y = sal *(100/100);
-    document.getElementById("totalprov01").value = y.toFixed(2);
-    var to = total_sal
-    var j = (50/100) * total_sal;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim =  l - final
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-
-	}
-//periculosidade
-  if(insa_val == 0.3){
-    var x = (30/100) * sal;
-    var y = sal *(100/100);
-    var z = x + y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
-    var to = total_sal
-    var j = (50/100) * total_sal;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = final + l
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-
-	}
-//insalubridades
-  if(insa_val == 0.2 && empresa_val == 1045 ){
-    var x = (20/100) * empresa_val;
-    var y = sal *(100/100);
-    var z = x + y;
+    var z =  y;
     document.getElementById("totalprov01").value = z.toFixed(2);
     var j = (50/100) * z;
     var m = total_Seguro *(100/100);
@@ -175,10 +133,10 @@ var calc = function(){
     document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
 
   }
-  if(insa_val == 0.4 && empresa_val == 1045 ){
-    var x = (40/100) * empresa_val;
+
+  if(empresa_val == 1104.93 ){
     var y = sal *(100/100);
-    var z = x + y;
+    var z = y;
     document.getElementById("totalprov01").value = z.toFixed(2);
     var j = (50/100) * z;
     var m = total_Seguro *(100/100);
@@ -193,62 +151,9 @@ var calc = function(){
     document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
   }
 
-  if(insa_val == 0.2 && empresa_val == 1104.93 ){
-    var x = (20/100) * empresa_val;
+  if(empresa_val == 1068.85 ){
     var y = sal *(100/100);
-    var z = x + y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
-    var j = (50/100) * z;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = final + l
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-  }
-  if(insa_val == 0.4 && empresa_val == 1104.93 ){
-    var x = (40/100) * empresa_val;
-    var y = sal *(100/100);
-    var z = x + y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
-    var j = (50/100) * z;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = final + l
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-  }
-
-  if(insa_val == 0.2 && empresa_val == 1068.85 ){
-    var x = (20/100) * empresa_val;
-    var y = sal *(100/100);
-    var z = x + y;
-    document.getElementById("totalprov01").value = z.toFixed(2);
-    var j = (50/100) * z;
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = final + l
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-  }
-  if(insa_val == 0.4 && empresa_val == 1068.85 ){
-    var x = (40/100) * empresa_val;
-    var y = sal *(100/100);
-    var z = x + y;
+    var z = y;
     document.getElementById("totalprov01").value = z.toFixed(2);
     var j = (50/100) * z;
     var m = total_Seguro *(100/100);
@@ -320,7 +225,7 @@ var calc = function(){
         <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
           <form onsubmit="calc();">
           <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
               <Label for="requisitante">Empresa<span class="fs-color-danger">*</span></Label>
               <select title="Escolha a empresa que trabalha" name="empresa" id="empresa01" class="form-control">
                 <optgroup label="selecione sua Empresa">
