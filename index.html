@@ -23,21 +23,24 @@
 
 </head>
 <script type="text/javascript">
-  var calc = function(){
-  var sal = document.getElementById("sal").value; // pegamos o valor que digitamos no input
+var calc = function(){
+	var sal = document.getElementById("sal").value; // pegamos o valor que digitamos no input
+  //pega valor empresa01;
+  var i = document.getElementById("empresa01");
+  var empresa_val = i.options[i.selectedIndex].value;
+  //pega valor adicional salário;
+  var e = document.getElementById("adicional01");
+  var insa_val = e.options[e.selectedIndex].value;
   //pega valor salário proventos;
   var total_sal = document.getElementById("totalprov01").value;
   //pega valor salário proventos;
-  var total_sal50_fim = sal * (50/100)
+  var total_sal50_fim = total_sal * (50/100)
   document.getElementById("totalprov50").value = total_sal50_fim.toFixed(2);
   var total_Seguro = document.getElementById("totalSeguro01").value;
   var total_Inss_Fim = document.getElementById("totalinss").value;
   var total_Ir_fim = document.getElementById("totalir").value;
-  var total_sem_inss = document.getElementById("totalajuda01").value;
-  var Sal_sem_inss = total_sal50_fim - total_Inss_Fim
 
 
- 
 //INSS
   if(total_sal50_fim <= 1045){
     var inss_Init_fim = (7.5/100) * total_sal50_fim;
@@ -63,44 +66,11 @@
     document.getElementById("totalinss").value = inss_Init_fim.toFixed(2);
   }
 
-//SEGURO desemprego
-  if(sal < 1599.61){
-    var x = (80/100) * sal;
-    document.getElementById("totalSeguro01").value = x.toFixed(2);
-  }
+  var sal50 = total_sal * (50/100)
+  var inss50 = inss_Init_fim
+  var Sal_sem_inss = sal50 - inss50
 
-  if(sal >= 1599.61 && sal <= 2666.29){
-    var dim = sal - 1599.61
-    var x = (50/100) * dim;
-    var y = 1279.69 *(100/100);
-    var z = x + y;
-    var total = z *(50/100)
-    document.getElementById("totalSeguro01").value = total.toFixed(2);
-  }
-  if(sal >= 2666.29 ){
-    var z = 1813.03 * (50/100);
-    document.getElementById("totalSeguro01").value = z.toFixed(2);
-  }
-  
-  
-//Por empresa
-  if(sal >= 1 ){
-    var y = sal *(100/100);
-    var z =  y;
-    var j = sal * (50/100);
-    var m = total_Seguro *(100/100);
-    var n = total_Inss_Fim *(100/100);
-    var k = total_Ir_fim *(100/100);
-    var l = j + m;//salario 50% + seguro desemprego
-    //tirar valor de inss e ir
-    var final = n + k
-    var final_fim = l - final
-    var outro = j - final
-    document.getElementById("totalajuda01").value = outro.toFixed(2);
-    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
-    document.getElementById("totalprov01").value = z.toFixed(2);
-  }
- //IRPF
+  //IRPF
   if(Sal_sem_inss <= 1903.98){
     //alert("Seu salario é menor ou igual a R$1903.98. Portanto não possui deduções de IR");
   }
@@ -127,6 +97,46 @@
     var fim = ir_final - 869.1336
     document.getElementById("totalir").value = fim.toFixed(2);
   }
+
+
+//SEGURO desemprego
+  if(total_sal < 1599.61){
+    var x = (80/100) * total_sal;
+    document.getElementById("totalSeguro01").value = x.toFixed(2);
+  }
+
+  if(total_sal >= 1599.61 && total_sal <= 2666.29){
+    var dim = total_sal - 1599.61
+    var x = (50/100) * dim;
+    var y = 1279.69 *(100/100);
+    var z = x + y;
+    var total = z *(50/100)
+    document.getElementById("totalSeguro01").value = total.toFixed(2);
+  }
+  if(total_sal >= 2666.29 ){
+    var z = 1813.03 * (50/100);
+    document.getElementById("totalSeguro01").value = z.toFixed(2);
+  }
+
+//sem adicional
+  if(sal >= 1){
+    var y = sal *(100/100);
+    document.getElementById("totalprov01").value = y.toFixed(2);
+    var to = total_sal
+    var j = (50/100) * total_sal;
+    var m = total_Seguro *(100/100);
+    var n = total_Inss_Fim *(100/100);
+    var k = total_Ir_fim *(100/100);
+    var l = j + m;//salario 50% + seguro desemprego
+    //tirar valor de inss e ir
+    var final = n + k
+    var final_fim = l - final
+    var outro = j - final
+    document.getElementById("totalajuda01").value = outro.toFixed(2);
+    document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
+
+   }
+
 };
 
 </script>
