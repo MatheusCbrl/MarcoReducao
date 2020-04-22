@@ -56,8 +56,8 @@ p.lead {
 
 .social-icons a {
   display: inline-block;
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 5rem;
+  width: 5rem;
   color: #fff !important;
   border-radius: 100%;
   text-align: center;
@@ -74,6 +74,11 @@ p.lead {
   background-color: #16dee5;
 }
 
+.imagem {
+  height: 300px;
+  width: 300px;
+  object-fit: contain;
+}
 .dev-icons {
   font-size: 3rem;
 }
@@ -115,6 +120,10 @@ p.lead {
   #sideNav .navbar-brand .img-banner {
     max-width: 15rem;
     max-height: 15rem;
+  }
+  #sideNav .navbar-brand .img-body {
+    max-width: 0.625rem;
+    max-height: 0.625rem;
   }
   #sideNav .navbar-collapse {
     display: flex;
