@@ -131,6 +131,12 @@
     document.getElementById("totalrecebe01").value = final_fim.toFixed(2);
 
 }
+   if(sal <= 3135){
+    var x = 100 *(100/100)
+    document.getElementById("valeRancho").value = x.toFixed(2);
+  } else {
+    document.getElementById("valeRancho").value = " ";
+  }
    
 };
 
@@ -251,6 +257,10 @@
             <div class="form-group col-md-3">
               <Label for="requisitante">Total Líquido a Receber</Label>
               <input class="form-control" id="totalrecebe01" type="number" value= " " disabled>
+            </div>
+	    <div class="form-group col-md-3">
+              <Label for="requisitante">Vale Rancho</Label>
+              <input class="form-control" id="valeRancho" type="number" value= " " disabled>
             </div>
           </div>
           <input class="btn btn-danger" type="reset" value="Limpar">
