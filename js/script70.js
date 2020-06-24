@@ -86,7 +86,7 @@ var calc = function () {
 
   if (sal >= 1599.61 && sal <= 2666.29) {
     var dim = sal - 1599.61;
-    var x = (50 / 100) * dim;
+    var x = (30 / 100) * dim;
     var y = 1279.69 * (100 / 100);
     var z = x + y;
     var total_seguro_fim = z * (70 / 100);
@@ -104,11 +104,11 @@ var calc = function () {
   //sem adicional
   if (insa_val == 1) {
     var salario100 = sal * (100 / 100);
-    var salario50 = sal * (50 / 100);
+    var salario30 = sal * (30 / 100);
     var seguro = total_Seguro * (100 / 100);
     var inss = inss_Init_fim * (100 / 100);
     var ir = fim * (100 / 100);
-    var salario51 = salario50 - (inss + ir);
+    var salario51 = salario30 - (inss + ir);
     var total = salario51 + total_seguro_fim;
     document.getElementById('totalprov01').value = salario100.toFixed(2);
     document.getElementById('totalajuda01').value = salario51.toFixed(2);
