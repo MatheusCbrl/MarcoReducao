@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Redução 70%</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/resume.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-logo mx-auto mb-3" src="img/marco1.png" alt="">
+    </span>
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">Simulador Redução 70%</span>
+      <span class="d-none d-lg-block">
+        <img class="img-fluid img-banner mx-auto mb-3" src="img/logo.png" alt="">
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#sobre">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#calculo">Cálculo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#info">Informações</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#dev">Desenvolvedor</a>
+        </li>
+      </ul>
+    </div>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-banner mx-auto mb-3" src="img/todossomosimportantes.png" alt="">
+    </span>
+  </nav>
+
+  <div class="container-fluid p-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="sobre">
+      <div class="w-100">
+        <h1 class="mb-0">Simulador
+          <span class="text-primary">Redução 70%</span>
+        </h1>
+        <div class="subheading mb-5">SIMULADOR DE BENEFÍCIO DE REDUÇÃO DE JORNADA DE TRABALHO E SALÁRIO CONFORME MP
+          936/20
+        </div>
+        <li class="lead mb-2"> Informe abaixo o seu salário base atual (valor hora X 220) para obter a simulação dos
+          rendimentos líquidos.</li>
+        <!--
+        <div class="social-icons">
+          <a href="#">
+            <i class="fab "><img class="img-fluid img-bus mx-auto mb-3" src="img/bus.png" alt=""></i>
+          </a>
+        </div>
+        -->
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="calculo">
+      <div class="w-100">
+        <h2 class="mb-3">Redução de Jornada e Salário</h2>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <form onsubmit="calc();">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <Label for="requisitante">Empresa<span class="fs-color-danger">*</span></Label>
+                <select name="empresa" id="empresa01" class="form-control">
+                  <optgroup label="Selecione sua Empresa">
+                    <option value="1" id="ins1">Marcopolo</option>
+                    <option value="14" id="ins2">Marcopolo Rio</option>
+                    <option value="18" id="ins3">Marcopolo São Mateus</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <Label for="requisitante">Salário Atual<span class="fs-color-danger">*</span></Label>
+                <input type="number" title="Informe aqui seu salário base atual" id="sal" class="form-control" />
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="form-group col-md-7">
+                <Label for="requisitante">Total de Proventos</Label>
+                <input class="form-control" id="totalprov01" type="number" value=" "
+                  placeholder="Total de proventos é: " disabled>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-9">
+                <button type="button" class="btn btn-success" id="button_acao" value="calcular" onclick="calc()">
+                  Calcular
+                </button>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-3">
+            <Label for="requisitante">Total de Proventos 30%</Label>
+            <input class="form-control" id="totalprov30" type="number" value=" " disabled>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-3">
+            <Label for="requisitante">INSS</Label>
+            <input class="form-control" id="totalinss" type="number" title="Desconto" value=" " disabled>
+          </div>
+          <div class="form-group col-md-3">
+            <Label for="requisitante">IR - Imposto de Renda</Label>
+            <input class="form-control" id="totalir" type="number" title="Desconto" value=" " disabled>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-3">
+            <Label for="requisitante">Salário 50 %</Label>
+            <input class="form-control" id="totalajuda01" type="number" value=" " disabled>
+          </div>
+          <div class="form-group col-md-3">
+            <Label for="requisitante">Benefício Emergencial (Governo)</Label>
+            <input class="form-control" id="totalSeguro01" type="number" value=" " disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-3">
+            <Label for="requisitante">Total Líquido a Receber</Label>
+            <input class="form-control" id="totalrecebe01" type="number" value=" " disabled>
+          </div>
+          <div class="form-group col-md-3">
+            <Label for="requisitante">Vale Rancho</Label>
+            <input class="form-control" id="valeRancho" type="number" value=" " disabled>
+          </div>
+        </div>
+        <input class="btn btn-danger" type="reset" value="Limpar">
+        <br>
+        </form>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="info">
+      <div class="w-100">
+        <h2 class="mb-5">Informações</h2>
+        <li class="mb-0">Os valores demonstrados acima são estimados e poderão sofrer variações.</li>
+        <li class="mb-0">Caso nos últimos 3 meses o colaborador tenha sido afastado, o cálculo será sobre o salário
+          mínimo.</li>
+        <li class="mb-0">Colaboradores aposentados não receberão a parcela do Benefício Emergencial.</li>
+        <li class="mb-0">Maiores informações podem ser obtidas contatando o time de Recursos Humanos: </li>
+        <br>
+        <hr>
+        <h3>Plantão de Atendimento:</h3>
+        <hr>
+        <h4 class="mb-0">Das 08h às 17h de Segunda à Sexta: </h4>
+        <br>
+        <p class="mb-0">Caxias do Sul e Escritórios Regionais: (54) 2101-4235 / (54) 2101-4040 / (54) 2101-4280 / (54)
+          2101-2193</p>
+        <p class="mb-0">São Mateus: (27) 3312-4006 e (27) 3312-4065</p>
+        <p class="mb-0">Rio de Janeiro: (21) 2108-4230</p>
+      </div>
+    </section>
+
+    <hr class="m-0">
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="dev">
+      <div class="w-100">
+        <h2 class="mb-5">Desenvolvedor</h2>
+        <ul class="fa-ul mb-0">
+          <li>
+            <i class="fa-li fa  text-warning"></i>
+            Recursos Humanos
+          </li>
+          <li>
+        </ul>
+        <img class="img-fluid imagem mx-0 mb-0" src="img/marco.png">
+      </div>
+    </section>
+    <hr class="m-0">
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/resume.min.js"></script>
+  <script src="js/script70.js"></script>
+</body>
+
+</html>
